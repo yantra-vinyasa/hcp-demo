@@ -50,3 +50,4 @@ For more detailed information on the concepts and resources used here, refer to 
 - [Installing a Hosted Control Plane with agent-based installers](https://docs.redhat.com/en/documentation/openshift_container_platform/4.19/html-single/hosted_control_planes/index)
 - [Helm Chart for Hypershift](https://github.com/loganmc10/hypershift-helm)
 - [Hypershift Baremetal Lab](https://labs.sysdeseng.com/hypershift-baremetal-lab/4.18/introduction.html)
+- [Firewall requirements for bare metal](https://docs.redhat.com/en/documentation/red_hat_advanced_cluster_management_for_kubernetes/2.11/html-single/clusters/index#firewall-port-reqs-bare-metal)
