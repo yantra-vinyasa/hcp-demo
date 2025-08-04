@@ -1,0 +1,26 @@
+apiVersion: agent-install.openshift.io/v1beta1
+kind: InfraEnv
+metadata:
+  labels:
+    agentclusterinstalls.extensions.hive.openshift.io/location: hcp-demo
+    networkType: static
+  name: hcp-demo
+  namespace: hcp-demo
+spec:
+  proxy:
+    httpProxy: ''
+    httpsProxy: ''
+    noProxy: ''
+  additionalNTPSources:
+  - pool.ntp.org
+  agentLabels:
+    agentclusterinstalls.extensions.hive.openshift.io/location: hcp-demo
+  cpuArchitecture: x86_64
+  imageType: full-iso
+  ipxeScriptType: DiscoveryImageAlways
+  nmStateConfigLabelSelector:
+    matchLabels:
+      infraenvs.agent-install.openshift.io: hcp-demo-worker
+  pullSecretRef:
+    name: pullsecret
+  sshAuthorizedKey: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC+5Yj7aZ...

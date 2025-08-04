@@ -1,0 +1,45 @@
+apiVersion: agent-install.openshift.io/v1beta1
+kind: NMStateConfig
+metadata:
+  name: worker-0
+  namespace: hcp-demo
+  labels:
+    infraenvs.agent-install.openshift.io: hcp-demo-worker
+spec:
+  config:
+    dns-resolver:
+      config:
+        server:
+        - 192.168.0.1
+        - 8.8.8.8
+    interfaces:
+    - ipv4:
+        address:
+        - ip: 192.168.29.10
+          prefix-length: 24
+        dhcp: false
+        enabled: true
+      ipv6:
+        enabled: false
+      link-aggregation:
+        mode: active-backup
+        options:
+          miimon: "150"
+        port:
+        - ens13f0
+        - ens13f2
+      mac-address: 52:54:00:A0:B0:C1
+      name: bond0
+      state: up
+      type: bond
+    routes:
+      config:
+      - destination: 0.0.0.0/0
+        next-hop-address: 192.168.29.1
+        next-hop-interface: bond0
+        table-id: 254
+  interfaces:
+  - macAddress: 52:54:00:A0:B0:C1
+    name: ens13f0
+  - macAddress: 52:54:00:A0:B0:C2
+    name: ens13f2

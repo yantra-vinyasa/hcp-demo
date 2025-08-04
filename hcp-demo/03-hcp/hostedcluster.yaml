@@ -1,0 +1,63 @@
+apiVersion: hypershift.openshift.io/v1beta1
+kind: HostedCluster
+metadata:
+  labels:
+    cluster.open-cluster-management.io/clusterset: demo
+  name: hcp-demo
+  namespace: hcp-demo
+spec:
+  configuration:
+    proxy:
+      httpProxy: 'http://proxy.example.com:8080'
+      httpsProxy: 'https://proxy.example.com:8080'
+      noProxy: 'localhost,127.0.0.1,.example.com'
+  additionalTrustBundle:
+    name: ca-bundle
+  autoscaling: {}
+  controllerAvailabilityPolicy: HighlyAvailable
+  dns:
+    baseDomain: example.com
+  etcd:
+    managed:
+      storage:
+        persistentVolume:
+          size: 8Gi
+        type: PersistentVolume
+    managementType: Managed
+  fips: false
+  infraID: hcp-demo
+  infrastructureAvailabilityPolicy: HighlyAvailable
+  issuerURL: https://kubernetes.default.svc
+  networking:
+    clusterNetwork:
+    - cidr: 10.8.0.0/16
+    networkType: OVNKubernetes
+    serviceNetwork:
+    - cidr: 10.9.0.0/16
+  olmCatalogPlacement: management
+  platform:
+    agent:
+      agentNamespace: hcp-demo
+    type: Agent
+  pullSecret:
+    name: pullsecret
+  release:
+    image: quay.io/openshift-release-dev/ocp-release:4.18.9-x86_64
+  services:
+  - service: APIServer
+    servicePublishingStrategy:
+      type: LoadBalancer
+  - service: OAuthServer
+    servicePublishingStrategy:
+      type: Route
+  - service: OIDC
+    servicePublishingStrategy:
+      type: Route
+  - service: Konnectivity
+    servicePublishingStrategy:
+      type: Route
+  - service: Ignition
+    servicePublishingStrategy:
+      type: Route
+  sshKey:
+    name: sshkey

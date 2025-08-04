@@ -1,0 +1,10 @@
+apiVersion: v1
+data:
+  ca-bundle.crt: |-
+    REPLACE_ME
+immutable: false
+kind: ConfigMap
+metadata:
+  name: ca-bundle
+  namespace: hcp-demo
+
