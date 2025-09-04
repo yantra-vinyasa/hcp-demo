@@ -22,8 +22,8 @@ This step creates the essential resources needed to bootstrap the installation p
 This stage defines the installation environment for the bare-metal nodes that will act as the infrastructure and worker nodes.
 
 - **Key Files:**
-  - [`02-infraenv-worker/infraenv.yaml`](./02-infraenv-worker/infraenv.yaml): The `InfraEnv` resource specifies the OS image, proxy, NTP, and networking details for the nodes.
-  - [`02-infraenv-worker/`](./02-infraenv-worker/): Contains `NMStateConfig` manifests that define the static network configuration for each bare-metal worker node.
+  - [`02-infraenv-worker-iso/infraenv.yaml`](./02-infraenv-worker-iso/infraenv.yaml): The `InfraEnv` resource specifies the OS image, proxy, NTP, and networking details for the nodes.
+  - [`02-infraenv-worker-iso/`](./02-infraenv-worker-iso/): Contains `NMStateConfig` manifests that define the static network configuration for each bare-metal worker node.
 
 ### 3. Define and Create the Hosted Cluster
 
